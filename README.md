@@ -1,13 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
-<!-- saved from url=(0074)http://www.cs.bilkent.edu.tr/~aytek.aman/cs465/assignments/asst2_2018.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
- <title>CS-465 Assignment 2</title>
-<style></style><style type="text/css">
-:root #content > #right > .dose > .dosesingle,
-:root #content > #center > .dose > .dosesingle,
-:root #header + #content > #left > #rlblock_left
-{ display: none !important; }</style></head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" alink="#FF0000" vlink="#AA00AA">
+
 
 <h1>Assignment 2: <p> Hierarchical Modeling: Modeling and Animating a Quadruped Animal</p></h1>
 <hr>
