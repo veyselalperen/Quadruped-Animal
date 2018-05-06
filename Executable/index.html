@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Quadruped Animal</title>
+	<style>
+		.row {
+			display: flex;
+		}
+		body {
+			background-color: linen;
+		}
+	</style>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+		attribute vec4 vColor;
+		varying vec4 fColor;
+		uniform mat4 modelViewMatrix;
+		uniform mat4 projectionMatrix;
+    void main() {
+      gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+	  fColor = vColor;
+    }
+		</script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+	varying vec4 fColor;
+    void main() {
+      gl_FragColor = vec4(0, 1.0, 1.0, 1.0);
+	  //gl_FragColor = fColor;
+    }
+    </script>
+
+    <script type="text/javascript" src="../Source/Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Source/Common/initShaders.js"></script>
+    <script type="text/javascript" src="../Source/Common/MV.js"></script>
+    <script type="text/javascript" src="../Source/Quadruped Animal.js"></script>
+  </head>
+
+  <body>
+    <div class="row">
+    <div class="column"><canvas id="gl-canvas" width="512" height="512">
+      Oops ... your browser doesn't support the HTML5 canvas element
+     </canvas></div>
+    <div class="column" style=" margin-left: 30px; margin-top: 30px;"> <div>
+      <form action="" id="kframes" style=" margin-top: 10px;">
+          <input id="kf1"type="radio" name="kf" value="true" checked="checked" onchange="setKF(0);"> First Keyframe<br>
+          <input id="kf2"type="radio" name="kf" value="false" onchange="setKF(1);"> Second Keyframe <br>
+        </form>
+      Walk Speed:  -20 <input id="slider_speed" type="range" min="-20" max="20" step="2" value="5" /> 20  <br />
+      <div id="sliders">
+        Head Angle:  -180 <input id="head" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Tail Angle:  -180 <input id="tail" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Body Angle:  -180 <input id="body" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Front Left Foot Up Angle:  -180 <input id="frontL1" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Front Left Foot Down Angle:  -180 <input id="frontL2" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Front Right Foot Up Angle:  -180 <input id="frontR1" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Front Right Foot Down Angle:  -180 <input id="frontR2" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Back Left Foot Up Angle:  -180 <input id="backL1" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Back Left Foot Down Angle:  -180 <input id="backL2" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Back Right Foot Up Angle:  -180 <input id="backR1" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+        Back Right Foot Down Angle:  -180 <input id="backR2" type="range" min="-180" max="180" step="5" value="0"/> 180 <br />
+    </div>
+      <br> <input id="action"type="button" name="action" value="Start/Pause" onclick="setActionButton();">
+       <input id="reset"type="button" name="action" value="Reset" onclick="resetButton();"><br>
+      <form action="" id="polygons"style=" margin-top: 10px;">
+        <input id="r1"type="radio" name="polygon" value="true" checked="checked" onchange="setRadioButton();"> Draw with polygons<br>
+        <input id="r2"type="radio" name="polygon" value="false" onchange="setRadioButton();"> Draw with lines<br>
+      </form>
+      </div>
+    
+      <input type='file' accept='*' onchange='openFile(event)' style=" margin-top: 10px;"><br>
+      <input id="down"type="button" name="down" value="Save Keyframes" onclick="saveKF();"><br>
+       <div id='output'>
+      </div>
+     
+  </div>
+     
+    </body>
+
+</html>
